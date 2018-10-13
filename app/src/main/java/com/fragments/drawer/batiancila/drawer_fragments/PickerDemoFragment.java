@@ -1,7 +1,6 @@
 package com.fragments.drawer.batiancila.drawer_fragments;
 
 import android.app.DatePickerDialog;
-import android.support.v4.app.Fragment;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
@@ -16,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.support.v4.app.Fragment;
 
 import java.util.Calendar;
 
@@ -28,8 +28,6 @@ public class PickerDemoFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.picker_demo_layout, container, false);
-
-
         dateEditText = layout.findViewById(R.id.date_editText);
         timeEditText = layout.findViewById(R.id.time_editText);
 
@@ -39,7 +37,6 @@ public class PickerDemoFragment extends Fragment implements View.OnClickListener
         return layout;
     }
 
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -47,10 +44,12 @@ public class PickerDemoFragment extends Fragment implements View.OnClickListener
         switch (id){
             case R.id.date_editText:
                 DialogFragment datePickerFragment = new DatePickerFragment();
+                datePickerFragment.show(datePickerFragment.getFragmentManager(), "datePicker");
                 break;
 
             case R.id.time_editText:
                 DialogFragment timePickerFragment = new TimePickerFragment();
+                timePickerFragment.show(timePickerFragment.getFragmentManager(), "timePicker");
                 break;
         }
     }
